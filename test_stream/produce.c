@@ -164,7 +164,7 @@ gen_array_chunk(struct ArrowArrayStream *stream, struct ArrowArray *array)
 			else if (c == 2)
 				null[r] = 0x55;
 			else
-				null[r] = 0x00;
+				null[r] = 0xFF;
 		}
 		/*
 		 * The data buffer should be aligned to 64 bytes.

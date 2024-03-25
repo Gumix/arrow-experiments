@@ -25,11 +25,11 @@ dump_chunk(struct ArrowArray *array, struct ArrowSchema *schema, int chunk_num)
 			uint8_t *nulls = (uint8_t *) col->buffers[0];
 			uint32_t *vals = (uint32_t *) col->buffers[1];
 
-			bool is_null = nulls[r / 8] & (1u << (r % 8));
-			if (is_null)
-				printf("null\t");
-			else
+			bool is_valid = nulls[r / 8] & (1u << (r % 8));
+			if (is_valid)
 				printf("%u\t", vals[r]);
+			else
+				printf("null\t");
 		}
 		printf("\n");
 	}
